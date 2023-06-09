@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import orsegups.spring.domain.User;
+import orsegups.spring.dto.UserDTO;
 import orsegups.spring.services.UserService;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -22,9 +24,10 @@ public class UserResource {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity <List<User>> findAll(){
+    public ResponseEntity <List<UserDTO>> findAll(){
         List<User> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        List<UserDTO> listDto= list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
 }
