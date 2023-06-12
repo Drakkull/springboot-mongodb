@@ -27,10 +27,20 @@ public class UserService {
         Optional<User> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found!!!"));
     }
-    public User insert(User obj){
+
+    public User insert(User obj) {
         return repo.insert(obj);
     }
-    public User fromDTO(UserDTO objDto){
+
+
+    //On video class told to use repo.delete(id) but doesn't work, only deleteById
+    public void delete(String id){
+        findById(id);
+        repo.deleteById(id);
+    }
+
+
+    public User fromDTO(UserDTO objDto) {
         return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
