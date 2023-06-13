@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import orsegups.spring.domain.Post;
 import orsegups.spring.domain.User;
+import orsegups.spring.dto.AuthorDTO;
 import orsegups.spring.repository.PostRepository;
 import orsegups.spring.repository.UserRepository;
 
@@ -41,13 +42,17 @@ public class Instantiation implements CommandLineRunner {
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
 
-        Post post1= new Post(null,null,"Partiu Viagem.", "Hoje vai ter puta", maria);
-
-        Post post2 = new Post(null, null,"Deu Merda", "Botam fé", maria);
-
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
+        Post post1= new Post(null,null,"Partiu Viagem.", "Hoje vai ter puta", new AuthorDTO(maria));
+
+        Post post2 = new Post(null, null,"Deu Merda", "Botam fé", new AuthorDTO(maria));
+
+        //userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
+
+
 
 
     }
