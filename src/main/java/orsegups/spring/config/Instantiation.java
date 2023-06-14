@@ -49,16 +49,14 @@ public class Instantiation implements CommandLineRunner {
         CommentDTO c2 = new CommentDTO("Teu cuuuu", null, new AuthorDTO(bob));
         CommentDTO c3 = new CommentDTO("Ahhh, te lascar!", null,new AuthorDTO(alex));
 
-        //Deveria funcionar, mas nao vai
-        /*
+        //Deveria funcionar, mas nao vai, it's not working, need help
+
         post1.getComments().addAll(Arrays.asList(c1,c2));
         post2.getComments().addAll(Arrays.asList(c3));
 
 
-         */
 
-
-        //userRepository.saveAll(Arrays.asList(maria, alex, bob));
+        userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 

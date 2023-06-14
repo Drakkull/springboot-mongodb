@@ -13,7 +13,7 @@ public class CommentDTO implements Serializable {
     private Date date;
     private AuthorDTO author;
 
-    private List<CommentDTO> comments = new ArrayList<>();
+
 
 
 
@@ -51,11 +51,5 @@ public class CommentDTO implements Serializable {
         this.author = author;
     }
 
-    public List<CommentDTO> getComments() {
-        return comments;
-    }
 
-    public void setComments(List<CommentDTO> comments) {
-        this.comments = comments;
-    }
 }
