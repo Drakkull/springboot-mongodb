@@ -7,6 +7,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import orsegups.spring.domain.Post;
 import orsegups.spring.domain.User;
 import orsegups.spring.dto.UserDTO;
+import orsegups.spring.resources.util.URL;
 import orsegups.spring.services.PostService;
 import orsegups.spring.services.UserService;
 
@@ -31,6 +32,14 @@ public class PostResource {
         Post obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
+    @RequestMapping(value ="/titlesearch", method = RequestMethod.GET)
+    public ResponseEntity <List<Post>> findByTitle(@RequestParam(value = "text",defaultValue = "") String text){
+        text = URL.decodeParam(text);
+        List<Post> list = service.findByTitle(text);
+        return ResponseEntity.ok().body(list);
+
+    }
+
 
 
 }
